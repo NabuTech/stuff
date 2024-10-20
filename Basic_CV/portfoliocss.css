@@ -1,0 +1,466 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f4f4f4;
+    color: #212529;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #212529;
+    padding: 10px 0;
+    border-bottom: 4px solid #00ffff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    color: #ff00ff; /* Neon Pink */
+}
+
+header {
+    text-align: center;
+}
+
+/* Section Styling */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#home {
+    background-color: #f4f4f4;
+}
+
+#contact {
+    background-color: #e4e4e4;
+}
+
+#blog {
+    background-color: #fff;
+}
+
+/* About Section Styling */
+#about {
+    padding: 50px;
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+    align-items: center;     /* Center vertically */
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between; /* Maintain space between the left and right */
+    align-items: center;            /* Vertically align the content in the middle */
+    max-width: 1200px;              /* Optional: set a max-width for the container */
+    width: 100%;
+}
+
+.about-left, .about-right {
+    width: 45%;
+    opacity: 0;
+}
+
+.about-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center profile picture and other elements */
+    animation: slideInLeft 1s forwards;
+}
+
+/* Profile Picture Styling */
+.profile-pic {
+    border-radius: 50%; /* Circular shape */
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-right {
+    animation: slideInRight 1s forwards;
+}
+
+/* Skills Section */
+.skill {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    width: 100px;
+    color: #ffffff; /* White label color */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.progress-container {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    border-radius: 5px;
+    background-color: rgba(0, 255, 255, 0.1); /* Faded background */
+}
+
+.progress {
+    background-color: #00ffff; /* Neon Cyan for progress */
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+    width: 0%; /* Start at 0 for animation */
+    transition: width 2s ease-in-out;
+}
+
+.empty-space {
+    background-color: rgba(0, 255, 255, 0.1); /* Faded color for remaining space */
+    height: 100%;
+    flex-grow: 1;
+}
+
+/* Responsive Queries */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center; /* Center align items for mobile */
+    }
+
+    .about-left, .about-right {
+        width: 100%;
+        text-align: center; /* Center text on mobile */
+    }
+
+    .about-left {
+        align-items: center; /* Ensure profile picture stays centered on mobile */
+    }
+}
+
+
+/* Skills Section */
+.skill {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    width: 100px;
+    color: #ff00ff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.progress-container {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    border-radius: 5px;
+    background-color: rgba(0, 255, 255, 0.1); /* Faded background */
+}
+
+.progress {
+    background-color: #00ffff; /* Neon Cyan for progress */
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+    width: 0%; /* Start at 0 for animation */
+    transition: width 2s ease-in-out; /* Smooth 2-second animation for width */
+}
+
+.empty-space {
+    background-color: rgba(0, 255, 255, 0.1); /* Faded color for remaining space */
+    height: 100%;
+    flex-grow: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Queries */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-left, .about-right {
+        width: 100%;
+    }
+}
+
+/* Projects Section */
+#projects {
+    background-color: #020617; /* Dark background */
+    color: #ffffff;
+    padding: 50px;
+    text-align: center;
+}
+/* Filter Row Styling */
+#filter-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-tag i {
+    font-size: 14px;
+}
+
+.filter-tag .hidden {
+    display: none; /* Hide check icon by default */
+}
+
+.filter-tag.selected .fas {
+    display: inline; /* Show check icon when selected */
+}
+
+.filter-tag:hover {
+    background-color: #00cccc; /* Lighter background on hover */
+}
+
+
+
+
+/* Project Cards Styling */
+.project-card {
+    display: none; /* Initially hide all cards */
+}
+
+/* Buttons and other styles remain the same */
+
+
+/* Rest of your CSS (Project cards, buttons, etc.) remains the same */
+
+
+/* Project Cards Container */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Project Card */
+.project-card {
+    display: flex;
+    background-color: #020617; /* Slightly lighter background for the card */
+    border: 1px solid #ffffff1a; /* Lighter border */
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left Column - Thumbnail */
+.project-left {
+    flex: 1;
+}
+
+.project-left img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Right Column - Details */
+.project-right {
+    flex: 2;
+    padding-left: 20px;
+    text-align: left;
+}
+
+/* Project Title */
+.project-right h3 {
+    color: #00ffff; /* Neon Cyan for title */
+    margin-bottom: 10px;
+}
+
+/* Description */
+.project-right p {
+    margin-bottom: 20px;
+    color: #d3d3d3;
+}
+
+/* Skills Tags */
+.skills-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.skill-tag {
+    background-color: #020617; /* Default background, replaced by specific brand colors in JS */
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Project Creation Date */
+.project-date {
+    color: rgba(255, 255, 255, 0.6); /* Faded text */
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Project Buttons */
+.project-buttons {
+    text-align: right; /* Align buttons to the right */
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.github-btn {
+    background-color: #00ffff; /* Neon Cyan */
+    color: #020617;
+}
+
+.demo-btn {
+    background-color: #020617; /* Match card background */
+    border: 1px solid #4a4a4a; /* Lighter border for demo button */
+    color: #ffffff;
+}
+
+/* Hover Effects */
+.btn:hover {
+    background-color: #00cccc; /* Darker shade for hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-right {
+        padding-left: 0;
+    }
+
+    .project-left img {
+        max-width: 100%;
+    }
+
+    .project-buttons {
+        text-align: center; /* Center the buttons on mobile */
+    }
+}
+
+
+footer {
+    background-color: #020617;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: row; /* Keep horizontal on mobile */
+        flex-wrap: wrap; /* Allow wrapping if needed on smaller screens */
+    }
+
+    nav ul li {
+        margin: 10px 10px; /* Adjust margins for smaller screens */
+    }
+
+    nav ul li a {
+        font-size: 16px; /* Adjust font size for readability */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 14px; /* Smaller font size for very small screens */
+    }
+}

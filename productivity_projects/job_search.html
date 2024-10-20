@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Search Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+    }
+
+    .action-btn {
+      cursor: pointer;
+    }
+
+    .status-select {
+      width: auto; 
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+
+    table {
+      table-layout: auto; 
+    }
+
+    .table td a {
+      display: inline-block;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis; 
+      white-space: nowrap;
+      vertical-align: middle;
+    }   
+
+    .table td.link-column {
+      width: 150px;
+    }
+
+    .link-truncate {
+      display: inline-block;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Job Search Tracker</h2>
+
+  <!-- Button to show/hide form -->
+  <button class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#jobForm" aria-expanded="false" aria-controls="jobForm">
+    Toggle Job Form
+  </button>
+
+  <!-- Collapsible Form -->
+  <div class="collapse" id="jobForm">
+    <div class="card card-body">
+      <!-- Job Entry Form -->
+      <div class="mb-3">
+        <input type="text" id="jobTitle" class="form-control mb-2" placeholder="Job Title">
+        <input type="text" id="companyName" class="form-control mb-2" placeholder="Company Name">
+        <input type="text" id="jobLocation" class="form-control mb-2" placeholder="Location (Remote/City)">
+        <input type="text" id="jobLink" class="form-control mb-2" placeholder="Job Link (URL)">
+        
+        <!-- Pre-defined Status Dropdown -->
+        <select id="jobStatus" class="form-control mb-2">
+          <option value="">Select Status</option>
+          <option value="Interested">Interested</option>
+          <option value="Applied">Applied</option>
+          <option value="Interview">Interview</option>
+          <option value="Offer">Offer</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Accepted">Accepted</option>
+        </select>
+
+        <input type="date" id="jobDateApplied" class="form-control mb-2" placeholder="Date Applied">
+        <input type="date" id="jobFollowUp" class="form-control mb-2" placeholder="Follow-Up Date">
+        <input type="text" id="applicationSource" class="form-control mb-2" placeholder="Job Source (e.g., LinkedIn)">
+        <input type="text" id="salaryRange" class="form-control mb-2" placeholder="Salary Range">
+        <textarea id="interviewStages" class="form-control mb-2" placeholder="Interview Stages" rows="2"></textarea>
+        <textarea id="jobNotes" class="form-control mb-2" rows="2" placeholder="Notes"></textarea>
+        <button class="btn btn-primary" id="addJobBtn">Add Job</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Table -->
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Job</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Link</th>
+        <th>Status</th>
+        <th>Date Applied</th>
+        <th>Follow-Up</th>
+        <th>Source</th>
+        <th>Salary</th>
+        <th>Interview Stages</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="jobTableBody">
+      <!-- Dynamic Content -->
+    </tbody>
+  </table>
+
+  <!-- Save and Load buttons -->
+  <button class="btn btn-success" id="saveJobsBtn">Save Jobs to File</button>
+  <input type="file" id="loadJobsInput" style="display:none;">
+  <button class="btn btn-primary" id="loadJobsBtn">Load Jobs from File</button>
+
+  <script>
+    // Initialize jobs array from localStorage or empty array
+    let jobs = JSON.parse(localStorage.getItem('jobList')) || [];
+
+    function getStatusClass(status) {
+      switch (status) {
+        case 'Interested':
+          return 'bg-secondary'; 
+        case 'Applied':
+          return 'bg-primary'; 
+        case 'Interview':
+          return 'bg-info'; 
+        case 'Offer':
+          return 'bg-success'; 
+        case 'Rejected':
+          return 'bg-danger'; 
+        case 'Accepted':
+          return 'bg-success'; 
+        default:
+          return 'bg-dark'; 
+      }
+    }
+
+    function displayJobs() {
+      const jobTableBody = document.getElementById('jobTableBody');
+      jobTableBody.innerHTML = '';
+
+      jobs.forEach((job, index) => {
+        jobTableBody.innerHTML += `
+          <tr>
+            <td>${job.title}</td>
+            <td>${job.company}</td>
+            <td>${job.location}</td>
+            <td class="link-column">
+              <a href="${job.link}" class="link-truncate" title="${job.link}">
+                ${job.link}
+              </a>
+            </td>
+            <td>
+              <select class="form-select status-select ${getStatusClass(job.status)}" onchange="updateStatus(${index}, this)">
+                <option value="Interested" ${job.status === 'Interested' ? 'selected' : ''}>Interested</option>
+                <option value="Applied" ${job.status === 'Applied' ? 'selected' : ''}>Applied</option>
+                <option value="Interview" ${job.status === 'Interview' ? 'selected' : ''}>Interview</option>
+                <option value="Offer" ${job.status === 'Offer' ? 'selected' : ''}>Offer</option>
+                <option value="Rejected" ${job.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+                <option value="Accepted" ${job.status === 'Accepted' ? 'selected' : ''}>Accepted</option>
+              </select>
+            </td>
+            <td>${job.dateApplied}</td>
+            <td>${job.followUpDate}</td>
+            <td>${job.source}</td>
+            <td>${job.salary}</td>
+            <td>${job.interviewStages}</td>
+            <td>${job.notes}</td>
+            <td>
+              <span class="action-btn text-warning" onclick="editJob(${index})">Edit</span> |
+              <span class="action-btn text-danger" onclick="deleteJob(${index})">Delete</span>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function updateStatus(index, selectElement) {
+      const newStatus = selectElement.value;
+      jobs[index].status = newStatus;
+      selectElement.className = `form-select status-select ${getStatusClass(newStatus)}`;
+      localStorage.setItem('jobList', JSON.stringify(jobs));
+      displayJobs();
+    }
+
+    document.getElementById('addJobBtn').addEventListener('click', () => {
+      const jobTitle = document.getElementById('jobTitle').value;
+      const companyName = document.getElementById('companyName').value;
+      const jobLocation = document.getElementById('jobLocation').value;
+      const jobLink = document.getElementById('jobLink').value;
+      const jobStatus = document.getElementById('jobStatus').value;
+      const jobDateApplied = document.getElementById('jobDateApplied').value;
+      const jobFollowUp = document.getElementById('jobFollowUp').value;
+      const applicationSource = document.getElementById('applicationSource').value;
+      const salaryRange = document.getElementById('salaryRange').value;
+      const interviewStages = document.getElementById('interviewStages').value;
+      const jobNotes = document.getElementById('jobNotes').value;
+
+      if (jobTitle && jobLink && jobStatus) {
+        jobs.push({
+          title: jobTitle,
+          company: companyName,
+          location: jobLocation,
+          link: jobLink,
+          status: jobStatus,
+          dateApplied: jobDateApplied,
+          followUpDate: jobFollowUp,
+          source: applicationSource,
+          salary: salaryRange,
+          interviewStages: interviewStages,
+          notes: jobNotes
+        });
+
+        localStorage.setItem('jobList', JSON.stringify(jobs));
+        displayJobs();
+
+        document.getElementById('jobTitle').value = '';
+        document.getElementById('companyName').value = '';
+        document.getElementById('jobLocation').value = '';
+        document.getElementById('jobLink').value = '';
+        document.getElementById('jobStatus').value = '';
+        document.getElementById('jobDateApplied').value = '';
+        document.getElementById('jobFollowUp').value = '';
+        document.getElementById('applicationSource').value = '';
+        document.getElementById('salaryRange').value = '';
+        document.getElementById('interviewStages').value = '';
+        document.getElementById('jobNotes').value = '';
+      } else {
+        alert("Please fill out all required fields.");
+      }
+    });
+
+    function deleteJob(index) {
+      jobs.splice(index, 1);
+      localStorage.setItem('jobList', JSON.stringify(jobs));
+      displayJobs();
+    }
+
+    function editJob(index) {
+      const job = jobs[index];
+      document.getElementById('jobTitle').value = job.title;
+      document.getElementById('companyName').value = job.company;
+      document.getElementById('jobLocation').value = job.location;
+      document.getElementById('jobLink').value = job.link;
+      document.getElementById('jobStatus').value = job.status;
+      document.getElementById('jobDateApplied').value = job.dateApplied;
+      document.getElementById('jobFollowUp').value = job.followUpDate;
+      document.getElementById('applicationSource').value = job.source;
+      document.getElementById('salaryRange').value = job.salary;
+      document.getElementById('interviewStages').value = job.interviewStages;
+      document.getElementById('jobNotes').value = job.notes;
+
+      deleteJob(index);
+    }
+
+    // Function to save jobs to a file
+    document.getElementById('saveJobsBtn').addEventListener('click', () => {
+      const json = JSON.stringify(jobs);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'jobs.json';
+      a.click();
+    });
+
+    // Function to load jobs from a file
+    document.getElementById('loadJobsBtn').addEventListener('click', () => {
+      document.getElementById('loadJobsInput').click();
+    });
+
+    document.getElementById('loadJobsInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const content = e.target.result;
+          jobs = JSON.parse(content);
+          localStorage.setItem('jobList', JSON.stringify(jobs));
+          displayJobs();
+        };
+        reader.readAsText(file);
+      }
+    });
+
+    window.onload = displayJobs;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

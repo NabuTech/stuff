@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Glyph</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .futuristic-glyph {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #00f0ff;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00ff;
+            animation: glyphPulse 2s infinite alternate;
+        }
+
+        @keyframes glyphPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+            }
+            100% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="futuristic-glyph"></div>
+</body>
+</html>

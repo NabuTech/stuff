@@ -1,0 +1,179 @@
+/* Body styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('neonbackground.webp'); /* Background image for the entire body */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes up full viewport height */
+}
+
+/* Main content container */
+.main-content {
+    background-color: rgba(0, 0, 0, 0.8); /* Adds a subtle background for better readability */
+    padding: 40px;
+    max-width: 900px;
+    margin: 40px auto; /* Auto margin to center the content */
+    color: #fff; /* Text color white for better contrast */
+    border-radius: 10px; /* Soft edges for content area */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add a shadow to lift the content */
+    flex: 1; /* Make the main content take up remaining space */
+}
+
+
+/* Header Styles */
+header {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    backdrop-filter: blur(10px); /* Blur background behind header */
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-links {
+    margin-right: 20px;
+}
+
+.header-links a {
+    color: #61dafb;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.header-links a:hover {
+    background-color: #61dafb;
+    color: white;
+    border-radius: 20px;
+}
+
+/* For larger desktop screens */
+@media (min-width: 1024px) {
+    header {
+        padding: 20px 0;
+    }
+    .header-links a {
+        font-size: 1.1rem;
+    }
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    backdrop-filter: blur(10px); /* Blur background behind header */
+}
+
+/* Mobile-friendly hamburger menu */
+@media (max-width: 768px) {
+    .header-links {
+        display: none; /* Hide links on smaller screens */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle on mobile */
+        background-color: #61dafb;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .menu-toggle.active + .header-links {
+        display: flex; /* Show menu on toggle */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: white;
+        padding: 10px;
+    }
+}
+
+/* For mobile-sized screens */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 0;
+        justify-content: space-between;
+    }
+    .header-links {
+        margin-right: 10px;
+    }
+    .header-links a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}
+
+.blog-content, .post-content {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.blog-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #ff00ff;
+}
+
+.blog-posts .post {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.post h2 a {
+    color: #ff00ff;
+    text-decoration: none;
+}
+
+.post h2 a:hover {
+    text-decoration: underline;
+}
+
+.post-summary {
+    font-size: 1rem;
+    color: #ddd;
+    margin: 10px 0;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Footer */
+footer {
+    background-color: #1b1b1b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0; /* Ensure footer stays at the bottom */
+}
+
+/* Footer links */
+.contact-info a {
+    color: #61dafb;
+    margin: 0 10px;
+}
+
+.contact-info a:hover {
+    color: #ff00ff;
+}

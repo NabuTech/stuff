@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexagon Circuit</title>
+    <style>
+        body {
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .hexagon-circuit {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: #00f0ff;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            box-shadow: 0 0 15px #00f0ff, 0 0 30px #ff00ff;
+            animation: circuitPulse 2s infinite alternate;
+        }
+
+        .hexagon-circuit::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+            background: transparent;
+            border: 2px solid #ff00ff;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            box-shadow: 0 0 15px #ff00ff;
+        }
+
+        @keyframes circuitPulse {
+            0% {
+                box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+            }
+            100% {
+                box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hexagon-circuit"></div>
+</body>
+</html>

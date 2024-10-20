@@ -1,0 +1,78 @@
+
+/* Main content background with circuit effect */
+.main-content {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #000; /* Black background for contrast */
+    overflow: hidden;
+    perspective: 1000px; /* Adds perspective for 3D effect */
+}
+
+/* Circuit board effect using ::before and ::after */
+.main-content::before,
+.main-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+            90deg,
+            rgba(0, 255, 255, 0.8) 0,   /* Neon blue lines */
+            rgba(0, 255, 255, 0.8) 2px, /* Thicker neon lines */
+            transparent 2px,
+            transparent 50px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 0, 255, 0.8) 0,   /* Neon pink lines */
+            rgba(255, 0, 255, 0.8) 2px, /* Thicker neon lines */
+            transparent 2px,
+            transparent 50px
+        );
+    z-index: -1;
+    opacity: 0.3; /* Subtle neon glow */
+    animation: bendGrid 10s ease-in-out infinite, moveCircuit 15s linear infinite;
+    transform-origin: center;
+}
+
+/* Keyframe for the bending/stretching effect */
+@keyframes bendGrid {
+    0%, 100% {
+        transform: scale(1) skew(0deg) rotateX(0deg);
+    }
+    25% {
+        transform: scale(1.1) skew(5deg, 5deg) rotateX(10deg); /* Bends grid slightly */
+    }
+    50% {
+        transform: scale(1.2) skew(10deg, 10deg) rotateX(20deg); /* Bends and stretches further */
+    }
+    75% {
+        transform: scale(1.1) skew(5deg, 5deg) rotateX(10deg); /* Returns to lighter bend */
+    }
+}
+
+/* Keyframe for circuit movement */
+@keyframes moveCircuit {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.5; /* Lines appear gently */
+        transform: translate(-10%, -10%);
+    }
+    50% {
+        opacity: 0.8; /* Lines fully visible */
+        transform: translate(-20%, -20%);
+    }
+    75% {
+        opacity: 0.5; /* Lines start disappearing */
+        transform: translate(-30%, -30%);
+    }
+}

@@ -1,0 +1,386 @@
+/* Root Variables for Thematic Use */
+:root {
+    /* Backgrounds */
+    --background-main: #000000;
+    --background-alternative: #1a1a1a; /* Alternative dark background for sections */
+    --background-secondary: #111111;
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-link: #ff00ff;
+    --text-hover: #0aff00;
+
+    /* Headings */
+    --heading-primary: #0aff00;
+    --heading-glow-subtle: rgba(4, 255, 135, 0.4); /* Subtle glow effect for toned-down headings */
+    --heading-muted: #888888; /* Subtle heading color for faded effects */
+
+    /* Borders and Dividers */
+    --border-light: #00d4ff;
+
+    /* Icons and Buttons */
+    --icon-primary: #04ff87;
+    --icon-hover: #0aff00;
+}
+
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-main);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--heading-primary);
+    text-shadow: 0 0 5px var(--heading-glow), 0 0 10px var(--heading-primary); /* Add glow effect to headings */
+}
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px;
+    background-color: #000;
+    color: #ffffff;
+}
+
+/* Center the logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px; /* Adjust spacing below logo */
+}
+
+.logo {
+    position: relative;
+    width: 20px;
+    height: 80px;
+    background: linear-gradient(180deg, #0aff00, #04ff87); /* Neon green contrasting color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0aff00, 0 0 20px #04ff87; /* Adjusted glow to match new color */
+    animation: obeliskGlow 2s infinite alternate;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    width: 50px;
+    height: 20px;
+    background: linear-gradient(90deg, #0aff00, #04ff87); /* Consistent color for the crossbar */
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0aff00, 0 0 20px #04ff87;
+}
+
+.logo-text {
+    display: flex;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 80px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.logo-text span {
+    display: inline-block;
+    animation: fadeOut 3s infinite alternate;
+}
+
+.logo-text span:nth-child(1) { animation-delay: 0.1s; }
+.logo-text span:nth-child(2) { animation-delay: 0.3s; }
+.logo-text span:nth-child(3) { animation-delay: 0.5s; }
+.logo-text span:nth-child(4) { animation-delay: 0.7s; }
+.logo-text span:nth-child(5) { animation-delay: 0.9s; }
+.logo-text span:nth-child(6) { animation-delay: 1.1s; }
+
+/* Align hero content to the left */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 600px;
+    text-align: left;
+}
+
+/* Orbitron font for headings */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Original Animations */
+@keyframes obeliskGlow {
+    0% {
+        box-shadow: 0 0 10px #0aff00, 0 0 20px #04ff87;
+    }
+    100% {
+        box-shadow: 0 0 20px #0aff00, 0 0 40px #04ff87;
+    }
+}
+
+@keyframes fadeOut {
+    0%, 100% {
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(0, 212, 255, 1), 0 0 10px rgba(0, 212, 255, 0.9), 
+                     0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.8), 
+                     0 0 60px rgba(255, 0, 255, 0.7);
+    }
+    50% {
+        color: #ff00ff; /* Bright magenta color for mid-animation */
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    }
+    80% {
+        color: #000000; /* Switch off effect */
+        text-shadow: none;
+    }
+}
+
+/* CTA Button */
+.cta-button {
+    padding: 10px 20px;
+    color: #000;
+    background-color: #0aff00;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+/* Mission Statement Section */
+.mission-statement {
+    background-color: var(--background-alternative);
+    padding: 40px 20px;
+    text-align: left;
+    border-top: 1px solid var(--border-light);
+}
+
+.mission-statement h2 {
+    font-size: 2.4em;
+    color: var(--heading-primary);
+    margin-bottom: 30px;
+    text-shadow: 0 0 3px var(--heading-glow-subtle), 0 0 6px var(--heading-primary);
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.column {
+    width: 45%;
+}
+
+/* About Section */
+.about h3, .services h3 {
+    font-size: 1.4em;
+    color: var(--heading-muted);
+    background: linear-gradient(to right, var(--text-secondary), var(--heading-muted));
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Personal Link */
+.personal-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-link);
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none; /* Remove default underline */
+    position: relative;
+    padding-right: 30px; /* Extra space for the arrow animation */
+}
+
+.personal-link i {
+    position: absolute;
+    right: 0; /* Start off in its final position */
+    opacity: 0; /* Hidden at first */
+    transition: right 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+.personal-link:hover i {
+    right: -20px; /* Moves the arrow left on hover */
+    opacity: 1; /* Fade in the arrow */
+    color: var(--text-hover); /* Change arrow color on hover */
+}
+
+.personal-link span {
+    transition: color 0.3s ease; /* Smooth text color change */
+}
+
+.personal-link:hover span {
+    color: var(--text-hover); /* Text turns green on hover */
+}
+
+
+/* Services Section */
+.services ul {
+    list-style: none;
+    padding: 0;
+}
+
+.services li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.service-icon {
+    color: var(--icon-primary);
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.service-text {
+    position: relative;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--text-primary); /* Underline only the text */
+}
+
+.services li:hover .service-text {
+    text-decoration: none;
+    color: var(--text-hover); /* Text color changes on hover */
+    border-bottom-color: var(--text-hover); /* Underline color changes on hover */
+    text-shadow: 0 0 5px var(--icon-hover), 0 0 10px var(--text-hover); /* Text glow */
+}
+/* SDLC Section */
+.sdlc-section {
+    padding: 60px 20px;
+    background-color: var(--background-secondary);
+}
+
+/* SDLC Content */
+.sdlc-content {
+    display: flex;
+}
+
+/* SDLC List (Left Column) */
+.sdlc-list {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* SDLC Item Hover and Active States */
+.sdlc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--background-secondary); /* No border or gap */
+    transition: background-color 0.3s ease, border 0.3s ease;
+    cursor: pointer;
+}
+
+.sdlc-item:hover {
+    background-color: var(--background-alternative); /* Lighter background on hover */
+    border-left: 4px solid var(--border-light); /* Left border on hover */
+}
+
+.sdlc-item.active {
+    border: 2px solid var(--heading-primary); /* Full border when selected */
+}
+
+/* SDLC Display (Right Column) */
+.sdlc-display {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sdlc-display img {
+    max-width: 66%; /* Ensure image fits within parent */
+    max-height: 66%; /* Prevent overflow */
+    object-fit: contain; /* Ensure image maintains aspect ratio */
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Smooth image transition effect */
+}
+
+/* Image Shape Modifiers */
+.semi-top {
+    border-radius: 100% 100% 0 0; /* Top semi-circle */
+}
+
+.diamond {
+    transform: rotate(45deg); /* Diamond shape by rotating a square */
+    border-radius: 0;
+}
+
+.square {
+    border-radius: 0; /* Square */
+}
+
+.circle {
+    border-radius: 50%; /* Circle */
+}
+
+.semi-bottom {
+    border-radius: 0 0 100% 100%; /* Bottom semi-circle */
+}
+
+/* Default: Desktop layout visible, mobile layout hidden */
+.desktop-layout {
+    display: flex;
+}
+
+.mobile-layout {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .desktop-layout {
+        display: none;
+    }
+
+    .mobile-layout {
+        display: flex;
+        flex-direction: row; /* Horizontal layout */
+        overflow-x: auto; /* Enable horizontal scroll */
+        scroll-snap-type: x mandatory; /* Snap to each card */
+        scroll-behavior: smooth;
+    }
+
+    .mobile-layout::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+
+    .sdlc-item-mobile {
+        min-width: 100vw; /* Ensure items take full viewport width */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .sdlc-item-mobile img {
+        max-width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .sdlc-item-mobile h3, .sdlc-item-mobile p {
+        text-align: center;
+    }
+}
+
+
+footer {
+    padding: 20px;
+    background-color: #000;
+}

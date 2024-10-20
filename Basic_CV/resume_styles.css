@@ -1,0 +1,131 @@
+/* resume_styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 2px solid rgb(192, 192, 192); /* $color-secondary */
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: rgb(75, 0, 130); /* $color-notification */
+}
+
+.contact-info p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid rgb(0, 255, 255); /* $color-highlight */
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f7f7f7; /* Light background to differentiate sections */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section p, .section ul, .section a {
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+}
+
+.section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.job h3, .education-entry h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.job p, .education-entry p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #777;
+}
+
+.contact p {
+    margin: 10px 0;
+}
+
+.contact a {
+    color: #333; /* Neutral text color */
+    text-decoration: none;
+    border-bottom: 2px solid rgb(0, 255, 255); /* $color-highlight as border-bottom */
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid rgb(192, 192, 192); /* $color-secondary */
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}

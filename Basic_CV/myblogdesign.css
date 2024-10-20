@@ -1,0 +1,648 @@
+/* Base CSS - Mobile First Approach */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: white;
+}
+
+.container {
+    background-color: white;
+    max-width: 1200px; /* Limit the page width to 1200px */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    color: #5ec7d3;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+header {
+    background-color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif; /* Tech style font */
+    font-size: 2rem;
+    color: #5ec7d3; /* Neon cyan for the base text color */
+    text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #5ec7d3, 0 0 20px #5ec7d3, 0 0 25px #5ec7d3; /* Neon blue and cyan glow effect */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Navbar with neon cyan borders */
+nav {
+    border-top: 2px solid #5ec7d3; /* Neon cyan top border */
+    border-bottom: 2px solid #5ec7d3; /* Neon cyan bottom border */
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Links hidden on mobile by default */
+nav ul {
+    list-style: none;
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+/* Link styling */
+nav ul li {
+    padding: 15px 0;
+    border-bottom: 2px solid #00f; /* Dark blue borders between links */
+}
+
+nav ul li:first-child {
+    border-top: none; /* No top border for the first item */
+}
+
+nav ul li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+nav ul li a {
+    color: black;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: #5ec7d3; /* Neon cyan on hover */
+    text-decoration: none;
+}
+
+/* Mobile Burger Menu Styles */
+.burger-menu {
+    display: block;
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 0; /* Vertical padding for burger icon */
+    z-index: 10;
+}
+
+/* Show links when burger is clicked */
+#nav-links.active {
+    display: flex;
+    flex-direction: column; /* Ensure links display as a column in mobile */
+}
+
+main {
+    background-image: url('neonbackground.webp'); /* Replace with the actual image path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    padding: 0;
+    margin: 0;
+}
+
+/* Hero Section Layout */
+.hero {
+    display: flex;
+    flex-wrap: wrap; /* Wrap to fit on small screens */
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.hero-left {
+    flex: 2; /* 2/3 width */
+    max-width: 66.66%; /* Explicitly set max-width to two-thirds */
+    padding: 15px;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 33.33%; /* Already set to one-third */
+    padding: 15px;
+    min-height: 100%; /* Ensure it takes the full height of the section */
+    position: relative;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .hero-left, .hero-right {
+        max-width: 100%; /* Make both columns full width on mobile */
+        padding: 10px 0; /* Reduce padding for mobile */
+    }
+}
+
+.about-text {
+    flex-grow: 1; /* Fills the space above the social icons */
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: absolute;
+    bottom: 0; /* Pins the social icons to the bottom */
+    left: 0;
+    right: 0;
+    padding-bottom: 10px; /* Adds padding at the bottom for spacing */
+}
+.social-icons a {
+    color: #5ec7d3; /* Neon cyan */
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00f; /* Dark blue on hover */
+}
+
+/* Make social media icons bigger on larger screens */
+@media (min-width: 768px) {
+    .social-icons a {
+        font-size: 3.5rem; /* Increase size on desktop */
+    }
+}
+/* Mobile-specific: Social icons remain under the about text */
+@media (max-width: 767px) {
+    .social-icons {
+        position: static; /* Remove fixed positioning on mobile */
+        margin-top: 20px;
+    }
+}
+
+/* Featured Blog Post on Left Column */
+.featured-post {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+.featured-post img {
+    max-width: 100%;
+    border-radius: 5px; /* Slightly rounded corners for the image */
+}
+
+/* Center description both vertically and horizontally */
+.post-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    background-color: rgba(94, 199, 211, 0.7); /* Semi-transparent background for better readability */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px;
+    text-align: center;
+}
+
+.post-description p {
+    margin: 0; /* Ensure no default margins in the description */
+    color: white; /* Ensure text contrast */
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #00f; /* Neon blue for the Latest Post header */
+    text-align: center;
+}
+
+/* Profile Section on Right Column */
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular profile image */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+.about-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.about-text p {
+    line-height: 1.6;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .hero-left, .hero-right {
+        padding: 10px 0;
+    }
+}
+
+/* Layout for Posts and Subscribe Section */
+.posts-subscribe {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.posts-left {
+    flex: 2; /* Left column takes up 2/3 width */
+    padding-right: 20px;
+}
+
+.subscribe-right {
+    flex: 1; /* Right column takes up 1/3 width */
+    padding: 20px;
+    border: 2px solid #00f; /* Dark blue border */
+    border-radius: 5px;
+}
+
+/* Post Title Link */
+.post-title {
+    color: #00f; /* Dark blue color for title */
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+/* Post Date */
+.post-date {
+    color: grey; /* Grey color for the post date */
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Normal Post Text */
+.post-text {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Subscribe Form Styles */
+.subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.subscribe-form button {
+    background: linear-gradient(135deg, #5ec7d3, #00f);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.subscribe-form button:hover {
+    background: linear-gradient(135deg, #00f, #5ec7d3); /* Reverse gradient on hover */
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .posts-subscribe {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .posts-left {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .subscribe-right {
+        padding: 15px;
+    }
+}
+/* Layout for Blog List and Filter Section */
+.blog-list-filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.blog-list-left {
+    flex: 2; /* List column takes 2/3 width */
+    padding-right: 20px;
+}
+
+.filter-right {
+    flex: 1; /* Filter column takes 1/3 width */
+    padding: 20px;
+}
+
+/* Blog Post List Styling */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.blog-post {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.post-link {
+    font-size: 1.5rem;
+    color: #00f; /* Dark blue for links */
+    text-decoration: none;
+}
+
+.post-link:hover {
+    text-decoration: underline;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: grey; /* Grey for the post date */
+    margin-bottom: 10px;
+}
+
+/* Toggle button for post details */
+.toggle-details {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.toggle-details i {
+    font-size: 1.2rem;
+    color: #00f;
+}
+
+.post-details {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.blog-post.active .post-details {
+    display: flex;
+    max-height: 500px; /* Adjust as needed */
+}
+
+
+/* Filter dropdown (hidden by default) */
+.month-list {
+    display: none; /* Hidden by default */
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.post-image img {
+    max-width: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.post-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Filter Form Styling */
+.filter-right h3 {
+    margin-bottom: 15px;
+}
+
+.year-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.year-list > li {
+    margin-bottom: 15px;
+}
+
+.year-toggle {
+    background-color: #00f; /* Dark blue */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 25%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.year-toggle i {
+    margin-left: 10px;
+}
+
+.year-toggle:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+.month-list {
+    display: none; /* Hidden by default */
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.year-list > li.active .month-list {
+    display: block;
+}
+
+.month-list li {
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.month-list li:hover {
+    color: #0056b3;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .blog-list-filter {
+        flex-direction: column;
+    }
+
+    .blog-list-left, .filter-right {
+        max-width: 100%;
+        padding: 10px 0;
+    }
+}
+
+
+article {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-left h4, .footer-right h4 {
+    color: #00f; /* Neon cyan */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-right .social-links a {
+    color: #5ec7d3;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-right .social-links a:hover {
+    color: #00f; /* Dark blue on hover */
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #555;
+}
+
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left, .footer-right {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .footer-right .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+/* Consolidated Media Queries for larger screens */
+@media (min-width: 768px) {
+    /* Larger screen adjustments */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 750px;
+    }
+
+    /* Hide burger menu on desktop */
+    .burger-menu {
+        display: none; /* Ensure burger is hidden on desktop */
+    }
+
+    /* Restore original link layout for desktop */
+    nav ul {
+        display: flex; /* Display links inline on desktop */
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    nav ul li {
+        padding: 0 15px; /* Restore original spacing */
+        border: none; /* Remove borders on desktop */
+    }
+}
+
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-left, .hero-right {
+        max-width: 100%;
+        padding: 10px 0;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .post-title {
+        font-size: 1.2rem;
+    }
+
+    .subscribe-right {
+        padding: 20px;
+    }
+
+    .footer-left, .footer-right {
+        text-align: center;
+        padding: 20px 0;
+    }
+}
+

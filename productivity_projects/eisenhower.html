@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eisenhower Matrix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .matrix-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Color-coded quadrants */
+        .urgent-important {
+            border: 2px solid red;
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+
+        .not-urgent-important {
+            border: 2px solid green;
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+
+        .urgent-not-important {
+            border: 2px solid yellow;
+            background-color: rgba(255, 255, 0, 0.1);
+        }
+
+        .not-urgent-not-important {
+            border: 2px solid gray;
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+
+        .matrix-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .todo-item {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Eisenhower Matrix</h1>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Drag and drop tasks into the appropriate quadrant, and they'll be saved in your browser. You can also delete tasks or reset the matrix.</p>
+            </div>
+        </div>
+
+        <div class="matrix-container">
+            <div id="urgent-important" class="matrix-quadrant urgent-important" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="matrix-title">Urgent & Important</div>
+            </div>
+            <div id="not-urgent-important" class="matrix-quadrant not-urgent-important" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="matrix-title">Not Urgent & Important</div>
+            </div>
+            <div id="urgent-not-important" class="matrix-quadrant urgent-not-important" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="matrix-title">Urgent & Not Important</div>
+            </div>
+            <div id="not-urgent-not-important" class="matrix-quadrant not-urgent-not-important" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="matrix-title">Not Urgent & Not Important</div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <div class="input-group">
+                <input type="text" id="taskInput" class="form-control" placeholder="Enter a new task">
+                <button class="btn btn-primary" onclick="addTask()">Add Task</button>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button class="btn btn-danger" onclick="resetMatrix()">Reset Matrix</button>
+        </div>
+    </div>
+
+    <script>
+        // Allow drop functionality
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // Drag start functionality
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        // Drop functionality
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var dropZone = ev.target;
+            if (dropZone.classList.contains('matrix-quadrant')) {
+                dropZone.appendChild(document.getElementById(data));
+                saveMatrixState();
+            }
+        }
+
+        // Add a task to the first quadrant
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskValue = taskInput.value;
+            if (taskValue) {
+                const taskId = 'task-' + Date.now();
+                const taskItem = createTaskElement(taskId, taskValue);
+
+                document.getElementById('urgent-important').appendChild(taskItem);
+                taskInput.value = '';
+
+                saveMatrixState();
+            }
+        }
+
+        // Create a task item element with delete button
+        function createTaskElement(id, taskText) {
+            const taskItem = document.createElement('div');
+            taskItem.id = id;
+            taskItem.className = 'todo-item';
+            taskItem.draggable = true;
+            taskItem.ondragstart = drag;
+
+            const taskContent = document.createElement('span');
+            taskContent.innerHTML = taskText;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-btn';
+            deleteButton.innerHTML = 'Delete';
+            deleteButton.onclick = function () {
+                deleteTask(taskItem);
+            };
+
+            taskItem.appendChild(taskContent);
+            taskItem.appendChild(deleteButton);
+
+            return taskItem;
+        }
+
+        // Delete a task
+        function deleteTask(taskItem) {
+            taskItem.parentElement.removeChild(taskItem);
+            saveMatrixState();
+        }
+
+        // Save the state of the matrix to local storage
+        function saveMatrixState() {
+            const matrixState = {
+                'urgent-important': document.getElementById('urgent-important').innerHTML,
+                'not-urgent-important': document.getElementById('not-urgent-important').innerHTML,
+                'urgent-not-important': document.getElementById('urgent-not-important').innerHTML,
+                'not-urgent-not-important': document.getElementById('not-urgent-not-important').innerHTML,
+            };
+            localStorage.setItem('eisenhowerMatrix', JSON.stringify(matrixState));
+        }
+
+        // Load the state of the matrix from local storage
+        function loadMatrixState() {
+            const savedState = JSON.parse(localStorage.getItem('eisenhowerMatrix'));
+            if (savedState) {
+                document.getElementById('urgent-important').innerHTML = savedState['urgent-important'];
+                document.getElementById('not-urgent-important').innerHTML = savedState['not-urgent-important'];
+                document.getElementById('urgent-not-important').innerHTML = savedState['urgent-not-important'];
+                document.getElementById('not-urgent-not-important').innerHTML = savedState['not-urgent-not-important'];
+
+                // Add drag and delete functionality to the loaded tasks
+                const todoItems = document.querySelectorAll('.todo-item');
+                todoItems.forEach(item => {
+                    item.draggable = true;
+                    item.ondragstart = drag;
+
+                    // Add delete button if it doesn't exist
+                    if (!item.querySelector('.delete-btn')) {
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'delete-btn';
+                        deleteButton.innerHTML = 'Delete';
+                        deleteButton.onclick = function () {
+                            deleteTask(item);
+                        };
+                        item.appendChild(deleteButton);
+                    }
+                });
+            }
+        }
+
+        // Reset the matrix and clear local storage
+        function resetMatrix() {
+            localStorage.removeItem('eisenhowerMatrix');
+            document.getElementById('urgent-important').innerHTML = '';
+            document.getElementById('not-urgent-important').innerHTML = '';
+            document.getElementById('urgent-not-important').innerHTML = '';
+            document.getElementById('not-urgent-not-important').innerHTML = '';
+        }
+
+        // Load matrix state when the page loads
+        window.onload = loadMatrixState;
+    </script>
+</body>
+
+</html>

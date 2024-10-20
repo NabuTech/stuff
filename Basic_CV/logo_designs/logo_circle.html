@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekNabu Symbol</title>
+    <style>
+        body {
+            background-color: #121212; /* Dark background to enhance neon effects */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .teknabu-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 80px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 5px rgba(0, 212, 255, 1), 
+                0 0 10px rgba(0, 212, 255, 0.9), 
+                0 0 20px rgba(0, 212, 255, 0.8), 
+                0 0 40px rgba(255, 0, 255, 0.8), 
+                0 0 60px rgba(255, 0, 255, 0.7);
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        .glyph-symbol {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #00f0ff;
+            border-radius: 50%; /* Creates a circular shape */
+            box-shadow: 
+                0 0 10px #00f0ff, 
+                0 0 20px #00f0ff, 
+                0 0 40px #ff00ff, 
+                0 0 60px #ff00ff; /* Glowing effect */
+            animation: pulse 2s infinite alternate;
+        }
+
+        .glyph-symbol::before, .glyph-symbol::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ff00ff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 
+                0 0 10px #ff00ff, 
+                0 0 20px #ff00ff, 
+                0 0 40px #ff00ff;
+        }
+
+        .glyph-symbol::before {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #00f0ff;
+        }
+
+        /* Neon Glow Animation */
+        @keyframes neonGlow {
+            from {
+                text-shadow: 
+                    0 0 10px rgba(0, 212, 255, 1), 
+                    0 0 20px rgba(0, 212, 255, 0.9), 
+                    0 0 40px rgba(0, 212, 255, 0.8), 
+                    0 0 60px rgba(255, 0, 255, 0.8), 
+                    0 0 100px rgba(255, 0, 255, 0.7);
+            }
+            to {
+                text-shadow: 
+                    0 0 15px rgba(0, 212, 255, 1), 
+                    0 0 30px rgba(0, 212, 255, 0.9), 
+                    0 0 60px rgba(255, 0, 255, 0.8), 
+                    0 0 90px rgba(255, 0, 255, 0.7), 
+                    0 0 150px rgba(255, 0, 255, 0.6);
+            }
+        }
+
+        /* Symbol Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glyph-symbol"></div>
+    <div class="teknabu-logo">TekNabu</div>
+</body>
+</html>

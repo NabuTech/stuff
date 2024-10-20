@@ -1,0 +1,131 @@
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-item {
+    border: none;
+  }
+  
+  .section-title-learning {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .section-title-job {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .section-title-brand {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .section-title-projects {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .card-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .list-group-item {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  button.accordion-button {
+    font-size: 1.25rem;
+  }
+  
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  /* Styling for the collapsible 'Today's Plan' section */
+  .today-plan-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .today-plan-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .today-plan-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .today-plan-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+  }
+  
+  .today-plan-item label {
+    font-size: 0.85rem;
+    color: #777;
+    margin-right: 10px;
+  }
+  
+  .today-plan-item span {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  /* Color-coding for the values based on sections */
+.learning-value {
+    color: #28a745;
+    display: flex;
+    align-items: center;
+  }
+  
+  .job-value {
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand-value {
+    color: #17a2b8;
+    display: flex;
+    align-items: center;
+  }
+  
+  .projects-value {
+    color: #dc3545;
+    display: flex;
+    align-items: center;
+  }
+  

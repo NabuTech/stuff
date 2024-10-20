@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfoliocss.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="about-container">
+            <!-- Left Column -->
+            <div class="about-left">
+                <div class="profile-pic">
+                    <img src="calabim400x400.png" alt="Profile Picture">
+                </div>
+                <h2>Who am I?</h2>
+                <p>
+                    Hi, I’m Sammy John Rawlinson! I’m a developer who loves building innovative solutions. Whether it's sleek front-end interfaces or powerful back-end systems, I thrive on turning ideas into efficient, user-friendly apps using <strong>React</strong>, <strong>Node.js</strong>, and <strong>HTML5</strong>.
+                </p>
+            </div>
+    
+            <!-- Right Column -->
+            <div class="about-right">
+                <h3>My Development Skills</h3>
+    
+                <div class="skill">
+                    <div class="label">HTML</div>
+                    <div class="progress-container">
+                        <div class="progress" data-skill="80"></div>
+                        <div class="empty-space"></div>
+                    </div>
+                </div>
+    
+                <div class="skill">
+                    <div class="label">React</div>
+                    <div class="progress-container">
+                        <div class="progress" data-skill="70"></div>
+                        <div class="empty-space"></div>
+                    </div>
+                </div>
+    
+                <div class="skill">
+                    <div class="label">Node.js</div>
+                    <div class="progress-container">
+                        <div class="progress" data-skill="60"></div>
+                        <div class="empty-space"></div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+            <!-- Filter Row -->
+            <div id="filter-row">
+                <div class="filter-tag" data-skill="All">
+                    <i class="fas fa-check hidden"></i> All
+                </div>
+                <div class="filter-tag" data-skill="React" style="background-color: #61DAFB;">
+                    <i class="fas fa-check hidden"></i> <i class="fab fa-react"></i> React
+                </div>
+                <div class="filter-tag" data-skill="JavaScript" style="background-color: #F7DF1E; color: #000;">
+                    <i class="fas fa-check hidden"></i> <i class="fab fa-js"></i> JavaScript
+                </div>
+                <div class="filter-tag" data-skill="Node.js" style="background-color: #3C873A;">
+                    <i class="fas fa-check hidden"></i> <i class="fab fa-node"></i> Node.js
+                </div>
+                <div class="filter-tag" data-skill="CSS" style="background-color: #2965F1;">
+                    <i class="fas fa-check hidden"></i> <i class="fab fa-css3-alt"></i> CSS
+                </div>
+            </div>
+            
+            
+            
+
+        <!-- Project List -->
+        <div class="project-list">
+            <!-- Example Project Cards -->
+            <div class="project-card" data-skills="React, JavaScript">
+                <div class="project-left">
+                    <img src="project-thumbnail.jpg" alt="Project Thumbnail">
+                </div>
+                <div class="project-right">
+                    <h3>React App</h3>
+                    <p>A simple app built with React and JavaScript.</p>
+                    <div class="skills-tags">
+                        <div class="skill-tag" style="background-color: #61DAFB;">
+                            <i class="fab fa-react"></i> React
+                        </div>
+                        <div class="skill-tag" style="background-color: #F7DF1E; color: #000;">
+                            <i class="fab fa-js"></i> JavaScript
+                        </div>
+                    </div>
+                    <p class="project-date">Created June, 2023</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn demo-btn">
+                            <i class="fas fa-globe"></i> View Demo
+                        </a>
+                        <a href="#" class="btn github-btn">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More project cards (same as before) -->
+            <!-- Example Project Card 2 -->
+            <div class="project-card" data-skills="Node.js, JavaScript">
+                <div class="project-left">
+                    <img src="project-thumbnail.jpg" alt="Project Thumbnail">
+                </div>
+                <div class="project-right">
+                    <h3>Node.js Backend</h3>
+                    <p>A backend service built using Node.js and JavaScript.</p>
+                    <div class="skills-tags">
+                        <div class="skill-tag" style="background-color: #3C873A;">
+                            <i class="fab fa-node"></i> Node.js
+                        </div>
+                        <div class="skill-tag" style="background-color: #F7DF1E; color: #000;">
+                            <i class="fab fa-js"></i> JavaScript
+                        </div>
+                    </div>
+                    <p class="project-date">Created July, 2023</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn demo-btn">
+                            <i class="fas fa-globe"></i> View Demo
+                        </a>
+                        <a href="#" class="btn github-btn">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Project Card 3 -->
+            <div class="project-card" data-skills="CSS, JavaScript">
+                <div class="project-left">
+                    <img src="project-thumbnail.jpg" alt="Project Thumbnail">
+                </div>
+                <div class="project-right">
+                    <h3>CSS Design</h3>
+                    <p>A website with an impressive design using CSS and JavaScript.</p>
+                    <div class="skills-tags">
+                        <div class="skill-tag" style="background-color: #2965F1;">
+                            <i class="fab fa-css3-alt"></i> CSS
+                        </div>
+                        <div class="skill-tag" style="background-color: #F7DF1E; color: #000;">
+                            <i class="fab fa-js"></i> JavaScript
+                        </div>
+                    </div>
+                    <p class="project-date">Created May, 2023</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn demo-btn">
+                            <i class="fas fa-globe"></i> View Demo
+                        </a>
+                        <a href="#" class="btn github-btn">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <footer>
+        <p>© 2024 My Portfolio</p>
+    </footer>
+
+    <script src="portfolioscript.js"></script>
+</body>
+</html>

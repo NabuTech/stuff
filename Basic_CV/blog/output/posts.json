@@ -1,0 +1,32 @@
+[
+  {
+    "title": "\"Understanding Async/Await\"",
+    "date": "\"2024-10-10\"",
+    "summary": "\"This post explains how async/await works in JavaScript, making asynchronous code easier to read.\"",
+    "file": "async-await.md"
+  },
+  {
+    "title": "\"Introduction to JavaScript Promises\"",
+    "date": "\"2024-10-15\"",
+    "summary": "\"This post covers the basics of JavaScript promises, including what they are and how to use them.\"",
+    "file": "example.md"
+  },
+  {
+    "title": "\"My Journey in Software Development: Year One - The Beginning\"",
+    "date": "\"2024-10-15\"",
+    "summary": "\"The beginning of my journey in Software Development.\"",
+    "file": "year_1_draft.md"
+  },
+  {
+    "title": "\"My Journey in Software Development: Year Two - The Climb\"",
+    "date": "\"2024-10-15\"",
+    "summary": "\"My second year in Software Development, finishing my diploma.\"",
+    "file": "year_2_draft.md"
+  },
+  {
+    "title": "\"My Journey in Software Development: Year Three – The Final Ascent\"",
+    "date": "\"2024-10-15\"",
+    "summary": "\"My third year in Software Development, continuing my studies and completing my Bachelor of I.\"",
+    "file": "year_3_draft.md"
+  }
+]
